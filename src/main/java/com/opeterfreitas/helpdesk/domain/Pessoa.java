@@ -3,6 +3,7 @@ package com.opeterfreitas.helpdesk.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.opeterfreitas.helpdesk.domain.enums.Perfil;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
@@ -25,6 +26,7 @@ public abstract class Pessoa implements Serializable {
     @Column(unique = true)
     protected String cpf;
 
+    @Email
     @Column(unique = true)
     protected String email;
     protected String senha;

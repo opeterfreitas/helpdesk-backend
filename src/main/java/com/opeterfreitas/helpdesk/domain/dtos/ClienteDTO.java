@@ -1,7 +1,7 @@
 package com.opeterfreitas.helpdesk.domain.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.opeterfreitas.helpdesk.domain.Tecnico;
+import com.opeterfreitas.helpdesk.domain.Cliente;
 import com.opeterfreitas.helpdesk.domain.enums.Perfil;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class TecnicoDTO implements Serializable {
+public class ClienteDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     protected Integer id;
@@ -32,11 +32,11 @@ public class TecnicoDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate dataCriacao = LocalDate.now();
 
-    public TecnicoDTO() {
+    public ClienteDTO() {
         addPerfil(Perfil.CLIENTE);
     }
 
-    public TecnicoDTO(Tecnico obj) {
+    public ClienteDTO(Cliente obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.cpf = obj.getCpf();
