@@ -42,8 +42,8 @@ public class TecnicoResource {
 
     @PutMapping("/{id}")
     public ResponseEntity<TecnicoDTO> update(@PathVariable Integer id, @Valid @RequestBody TecnicoDTO objDTO) {
-        Tecnico obj = service.update(id, objDTO);
-        return ResponseEntity.ok().body(new TecnicoDTO(obj));
+        Tecnico newObj = service.update(id, objDTO);
+        return ResponseEntity.ok().body(new TecnicoDTO(newObj));
     }
 
     @DeleteMapping("/{id}")
