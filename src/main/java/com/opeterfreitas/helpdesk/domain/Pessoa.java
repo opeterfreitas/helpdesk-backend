@@ -2,8 +2,8 @@ package com.opeterfreitas.helpdesk.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.opeterfreitas.helpdesk.domain.enums.Perfil;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;

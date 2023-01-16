@@ -7,8 +7,8 @@ import com.opeterfreitas.helpdesk.repositories.PessoaRepository;
 import com.opeterfreitas.helpdesk.repositories.TecnicoRepository;
 import com.opeterfreitas.helpdesk.services.exceptions.DataIntegrityViolationException;
 import com.opeterfreitas.helpdesk.services.exceptions.ObjectNotFoundException;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +22,8 @@ public class TecnicoService {
     private TecnicoRepository repository;
     @Autowired
     private PessoaRepository pessoaRepository;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     public Tecnico findById(Integer id) {
         Optional<Tecnico> obj = repository.findById(id);
@@ -35,13 +37,14 @@ public class TecnicoService {
     @Transactional
     public Tecnico create(TecnicoDTO objDTO) {
         objDTO.setId(null);
+        objDTO.setSenha(encoder.encode(objDTO.getSenha()));
         validaPorCpfEEmail(objDTO);
         Tecnico newObj = new Tecnico(objDTO);
         return repository.save(newObj);
     }
 
     @Transactional
-    public Tecnico update(Integer id, @Valid TecnicoDTO objDTO) {
+    public Tecnico update(Integer id, TecnicoDTO objDTO) {
         objDTO.setId(id);
         Tecnico oldObj = findById(id);
         validaPorCpfEEmail(objDTO);

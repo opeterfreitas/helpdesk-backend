@@ -7,8 +7,8 @@ import com.opeterfreitas.helpdesk.repositories.ClienteRepository;
 import com.opeterfreitas.helpdesk.repositories.PessoaRepository;
 import com.opeterfreitas.helpdesk.services.exceptions.DataIntegrityViolationException;
 import com.opeterfreitas.helpdesk.services.exceptions.ObjectNotFoundException;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +22,8 @@ public class ClienteService {
     private ClienteRepository repository;
     @Autowired
     private PessoaRepository pessoaRepository;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     public Cliente findById(Integer id) {
         Optional<Cliente> obj = repository.findById(id);
@@ -35,13 +37,14 @@ public class ClienteService {
     @Transactional
     public Cliente create(ClienteDTO objDTO) {
         objDTO.setId(null);
+        objDTO.setSenha(encoder.encode(objDTO.getSenha()));
         validaPorCpfEEmail(objDTO);
         Cliente newObj = new Cliente(objDTO);
         return repository.save(newObj);
     }
 
     @Transactional
-    public Cliente update(Integer id, @Valid ClienteDTO objDTO) {
+    public Cliente update(Integer id, ClienteDTO objDTO) {
         objDTO.setId(id);
         Cliente oldObj = findById(id);
         validaPorCpfEEmail(objDTO);

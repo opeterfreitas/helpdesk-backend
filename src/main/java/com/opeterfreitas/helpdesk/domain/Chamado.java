@@ -3,7 +3,7 @@ package com.opeterfreitas.helpdesk.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.opeterfreitas.helpdesk.domain.enums.Prioridade;
 import com.opeterfreitas.helpdesk.domain.enums.Status;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;

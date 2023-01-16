@@ -3,7 +3,7 @@ package com.opeterfreitas.helpdesk.resources;
 import com.opeterfreitas.helpdesk.domain.Chamado;
 import com.opeterfreitas.helpdesk.domain.dtos.ChamadoDTO;
 import com.opeterfreitas.helpdesk.services.ChamadoService;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

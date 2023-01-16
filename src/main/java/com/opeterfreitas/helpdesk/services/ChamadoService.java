@@ -69,6 +69,4 @@ public class ChamadoService {
         chamado.setObservacoes(objDTO.getObservacoes());
         return chamado;
     }
-
-
 }

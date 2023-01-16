@@ -3,7 +3,7 @@ package com.opeterfreitas.helpdesk.resources;
 import com.opeterfreitas.helpdesk.domain.Tecnico;
 import com.opeterfreitas.helpdesk.domain.dtos.TecnicoDTO;
 import com.opeterfreitas.helpdesk.services.TecnicoService;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
